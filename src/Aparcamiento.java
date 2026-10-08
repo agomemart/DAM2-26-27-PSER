@@ -1,23 +1,48 @@
 public class Aparcamiento {
-    final static int PLAZAS_LIBRES = 10;
-    static String[] aparcamiento = new String[PLAZAS_LIBRES];
+    private final int[] plazas;
+    private int plazasLibres;
 
-
-    public static void main(String[] args) {
-        for (int i = 0; i < aparcamiento.length; i++) {
-            aparcamiento[i] = "| X | ";
-            System.out.print(aparcamiento[i]);
-        }
-
-
+    public Aparcamiento(int numPlazas) {
+        plazas = new int[numPlazas];
+        plazasLibres = numPlazas;
     }
 
-    public void aparcar(Conductor c) {
-        for (int i = 0; i < aparcamiento.length; i++) {
-            if (aparcamiento[i].equals("| X | ")) {
-                aparcamiento[i] = "| " + c.nombre + " | ";
-                break;
+    public synchronized int aparcar(int conductor) {
+        while (plazasLibres == 0) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
             }
         }
+        int plaza = 0;
+        while (plazas[plaza] != 0) {
+            plaza++;
+        }
+
+        plazas[plaza] = conductor;
+        plazasLibres--;
+
+        System.out.println("Conductor " + conductor + " entra en la plaza " + plaza);
+        System.out.println(estado());
+
+        return plaza;
+    }
+
+    public synchronized void salir(int conductor, int plaza) {
+        plazas[plaza] = 0;
+        plazasLibres++;
+        System.out.println("Conductor " + conductor + " sale de la plaza " + plaza);
+        System.out.println(estado());
+        notifyAll();
+    }
+
+    public String estado() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < plazas.length; i++) {
+            sb.append(" | ");
+            sb.append(plazas[i] == 0 ? "--" : plazas[i]);
+        }
+
+        return sb.append(" |").toString();
     }
 }

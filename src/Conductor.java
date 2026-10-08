@@ -1,22 +1,23 @@
 import java.util.Random;
 
 public class Conductor extends Thread {
-    final int NUM_CONDUCTORES = 50;
-    final Random rnd = new Random();
 
-    String nombre;
+    private final int numero;
+    private final Aparcamiento aparcamiento;
+    private static final Random rnd = new Random();
 
-    public Conductor(String nombre) {
-        this.nombre = nombre;
+    public Conductor(int numero, Aparcamiento aparcamiento) {
+        this.numero = numero;
+        this.aparcamiento = aparcamiento;
     }
 
-
-    @Override 
+    @Override
     public void run() {
         try {
-            Thread.sleep(rnd.nextInt(6));
+            int plaza = aparcamiento.aparcar(numero);
+            Thread.sleep(1000 + rnd.nextInt(4001));
+            aparcamiento.salir(numero, plaza);
         } catch (InterruptedException e) {
         }
-
     }
 }
