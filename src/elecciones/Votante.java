@@ -1,3 +1,4 @@
+package elecciones;
 import java.util.Random;
 
 public class Votante extends Thread {

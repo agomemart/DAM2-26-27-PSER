@@ -1,3 +1,4 @@
+package aparcamiento;
 import java.util.Random;
 
 public class Conductor extends Thread {

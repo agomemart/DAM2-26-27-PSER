@@ -1,3 +1,4 @@
+package aparcamiento;
 public class Aparcamiento {
     private final int[] plazas;
     private int plazasLibres;

@@ -1,3 +1,4 @@
+package aparcamiento;
 public class MainAparcamiento {
     static final int NUM_PLAZAS = 10;
     static final int NUM_CONDUCTORES = 50;

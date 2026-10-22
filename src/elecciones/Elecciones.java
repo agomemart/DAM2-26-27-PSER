@@ -1,3 +1,4 @@
+package elecciones;
 public class Elecciones extends Thread {
 
     static final int NUM_HABITANTES = 10000;

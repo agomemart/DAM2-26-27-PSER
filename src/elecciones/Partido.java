@@ -1,3 +1,4 @@
+package elecciones;
 public class Partido {
     private final String nombre;
     private int numVotos;
