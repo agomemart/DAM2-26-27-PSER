@@ -6,11 +6,10 @@ public class Jefe extends Thread {
     final int TIEMPO_ESPERA = 3000;
     String nombre;
     Oficina oficina;
-    static int contJefe = 0;
     static Random rnd = new Random();
 
     public Jefe(Oficina oficina) {
-        this.nombre = "Jefe" + ++contJefe;
+        this.nombre = "Jefe";
         this.oficina = oficina;
     }
 
