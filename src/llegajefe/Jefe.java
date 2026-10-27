@@ -3,7 +3,7 @@ package llegajefe;
 import java.util.Random;
 
 public class Jefe extends Thread {
-    final int TIEMPO_ESPERA = 3000;
+    final int TIEMPO_ESPERA = 1000;
     String nombre;
     Oficina oficina;
     static Random rnd = new Random();

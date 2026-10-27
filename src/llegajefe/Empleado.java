@@ -3,7 +3,7 @@ package llegajefe;
 import java.util.Random;
 
 public class Empleado extends Thread {
-    final int TIEMPO_ESPERA = 3000;
+    final int TIEMPO_ESPERA = 2000;
     String nombre;
     Oficina oficina;
     static int contEmpleados = 0;
@@ -17,7 +17,7 @@ public class Empleado extends Thread {
     @Override
     public void run() {
         try {
-            Thread.sleep(rnd.nextInt(3000));
+            Thread.sleep(rnd.nextInt(TIEMPO_ESPERA));
         } catch (InterruptedException ex) {
         }
         oficina.llegaEmpleado(this);
